@@ -5,7 +5,7 @@ const textToImage = require("text-to-image");
 
 const app = express();
 app.use(cookieParser());
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 app.get("/", (req, res) => {
   res.send("Use to get /image.png to get an image!");
