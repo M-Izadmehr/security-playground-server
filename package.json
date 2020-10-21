@@ -1,0 +1,14 @@
+{
+  "name": "cookie-security-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./app/server.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "text-to-image": "^2.4.4"
+  }
+}
