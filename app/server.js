@@ -5,15 +5,15 @@ const textToImage = require("text-to-image");
 
 const app = express();
 app.use(cookieParser());
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Use to get /image.png to get an image!");
 });
 
 app.get("/image.png", async (req, res) => {
   const userAuthentication =
-    req.cookies.authentication || "No authentication cookie";
+    req.cookies.authentication || "No authentication cookie found!";
   const textStyle = {
     fontSize: 18,
     fontFamily: "Arial",
